@@ -1,11 +1,5 @@
 "use strict"
 
-require('babel-core/register')({
-    presets: ['es2015-node5', 'react', 'stage-3', 'stage-0']
-})
-
-require('babel-polyfill')
-
 import path from 'path'
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
@@ -21,7 +15,6 @@ const defaultCfg = {
 export default class {
     constructor(config = defaultCfg) {
         this.config = config
-        console.log(config)
         const renderer = config.stream ? ReactDOMStream: ReactDOMServer
         this.renderString = config.clear? renderer.renderToStaticMarkup: renderer.renderToString
         this.cache = {}
